@@ -1,15 +1,18 @@
-
-
-logo{
-    animation: logo_animation 5s infinite;
+/*add animation to logo*/
+@keyframes logo_animation {
+    from {width:25px; opacity:0;}
+    to {width: 475px; opacity: 1;}
+}
+#logo{
+    animation-name: logo_animation; 
+    animation-duration: 5s;
+    width: 25px;
+    align-self: center;
+    animation-fill-mode: forwards;
  }
 
-@keyframes logo_animation {
-    from {width:25px; opacity:0}
-    to{width: 475px; opacity: 1}
-}
 
-
+/*style the body text*/
 body{
     font-family: Poppins, serif;
     background-color:  #f1f1f1;
@@ -17,25 +20,27 @@ body{
 
 }
 
+/* style the headers */
 header{
     display: flex;
     flex-direction: column;
 }
+
+/* style the nav links */
 .nav_links{
     display: flex;
     flex-direction: column;
     align-items: center;
     flex-wrap: nowrap;
-}
-
-.nav_links{
     text-decoration: auto;
 }
 
+/* style the nav links to not change color when clicked*/
 .nav_links :link, :visited{
     color: blue;
 }
 
+/* style the card headers so they are rounded, have a border, and have padding*/
 .card > header{
     background: #288088;
     border: solid 2px #45ADAD;
@@ -45,14 +50,14 @@ header{
 
 }
 
+/* style the cards to round the corners and give an initial size of 450px*/
 .card{
-    display: flex;
-    flex-direction: column;
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     flex-basis: 450px;
 }
 
+/*style the pricing with flex */
 .pricing{
     display: flex;
     flex-direction: column;
@@ -61,6 +66,7 @@ header{
     flex-wrap: wrap;
 }
 
+/*style the gallery to use flex and wrap*/
 .gallery{
     display: flex;
     flex-direction: row;
@@ -68,6 +74,7 @@ header{
     justify-content: center;
 }
 
+/* style images of the gallery to have an inital width, margin, and border */
 .gallery  img{
     border: solid 10px #50C7C7;
     margin: 10px;
@@ -75,10 +82,10 @@ header{
 }
 
 
-
+/* style for a media screen larger than 900px*/
 @media screen and (min-width: 900px) {
 
-
+    /* style the header and nav links to use flex and be centered w space around */
     header, .nav_links{
     display: flex;
     flex-direction: row;
@@ -86,57 +93,58 @@ header{
     justify-content: space-between;
     }
 
-
+    /* style pricing to have a specific size, to wrap, and be centered*/
     .pricing{
         display: flex;
+        align-items: center;
         flex-direction: row;
         flex-basis: 275px;
-        justify-content: center;
+        flex-wrap: wrap;
     }
 
+    /*style the cards*/
     .card{
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
         border-top-left-radius: 50px;
         border-top-right-radius: 50px;
         flex-basis: 275px;
     }
 
+     /* The sticky class is added to the header with JS when it reaches its scroll position */
 
+
+  /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
     body > header {
         position: sticky;
         top: 0;
         z-index: 999;
       }
 
+    /*style the gallery to wrap */
       .gallery{
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        flex-basis: 30%
     }
 
 
 
 
-    /* The sticky class is added to the header with JS when it reaches its scroll position */
-
-
-  /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
 
 
   }
 
+  /*style for reduced motion (turn off logo animation) */
   @media (prefers-reduced-motion: reduce) {
 
-    @keyframes logo {
-        from {width:25px; opacity:0}
-        to{width: 475px; opacity: 1}
-    }
+
+    #logo{
+        animation:none;
+     }
+    
   }
 
+  /*style for print view */
   @media print {
     @page {
         size: portrait;
@@ -153,10 +161,12 @@ header{
     nav .nav_links {
         display: flex;
         justify-content: space-around;
+        flex-direction: row;
+        align-items: center;
 
     }
 
-    .card > {
+    .card{
         border: solid 2px #45ADDD;
         flex-basis: 325px;
     }
@@ -166,7 +176,8 @@ header{
         display: none;
     }
 
-    .nav_links{
+
+    nav .nav_links{
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -182,13 +193,9 @@ header{
     }
 
 
+    /* add the thumbs up emoji */
     .card li:nth-child(2):after{
         content: "👍";
-    }
-
-    .card{
-        border: solid 2px #45ADDD;
-        flex-basis: 325px;
     }
 
     }
